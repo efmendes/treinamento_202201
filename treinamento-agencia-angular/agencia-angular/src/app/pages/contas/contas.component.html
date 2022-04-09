@@ -1,0 +1,24 @@
+<p align="center">Minhas Contas</p>
+
+<table class="table table-dark table-striped">
+
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Agencia</th>
+      <th scope="col">Número</th>
+      <th scope="col">Saldo</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let conta of contas">
+      <th scope="row">{{ conta.id }}</th>
+      <td>{{ conta.agencia }}</td>
+      <td>{{ conta.numero }}</td>
+      <td>{{ conta.saldo }}</td>
+      <td>{{ conta.cliente.nome }}</td>
+      <td>{{ conta.cliente.email }}</td>
+    </tr>
+  </tbody>

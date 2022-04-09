@@ -10,6 +10,7 @@ spring:
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   jpa:
+
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     show-sql: true
     format-sql: false

@@ -1,0 +1,24 @@
+<p>Meus Clientes</p>
+
+<table class="table table-dark table-striped">
+
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Cpf</th>
+      <th scope="col">Email</th>
+      <th scope="col">Observações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of clientes">
+      <th scope="row">{{ cliente.id }}</th>
+      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.cpf }}</td>
+      <td>{{ cliente.email }}</td>
+      <td>{{ cliente.observacoes }}</td>
+    </tr>
+  </tbody>
+
+</table>
