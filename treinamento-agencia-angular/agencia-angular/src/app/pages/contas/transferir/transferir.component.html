@@ -1,0 +1,50 @@
+<h3 class="mb-3">Tranferência</h3>
+
+{{ formTransferencia.value | json }}
+
+<form [formGroup]="formTransferencia" class="container" (ngSubmit)="transferir()">
+
+  <div class="mb-3">
+    <label for="nome" class="form-label">Nome</label>
+    <input type="text" class="form-control" id="nome" formControlName="nome">
+  </div>
+
+  <div class="mb-3">
+    <div class="row g-3">
+      <div class="col">
+        <label for="agenciaOrigem" class="form-label">Agência</label>
+        <input type="text" class="form-control" id="agenciaOrigem" formControlName="agenciaOrigem">
+      </div>
+
+      <div class="col">
+        <label for="numeroContaOrigem" class="form-label">Conta</label>
+        <input type="text" class="form-control" id="numeroContaOrigem" formControlName="numeroContaOrigem">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="mb-3">
+    <strong><label for="" class="form-label">Transferir Para:</label></strong><hr>
+  </div>
+
+  <div class="mb-3">
+    <div class="row g-3">
+      <div class="col">
+        <label for="agenciaDestino" class="form-label">Agência Destino</label>
+        <input type="text" class="form-control" aria-label="First name" id="agenciaDestino" formControlName="agenciaDestino">
+      </div>
+      <div class="col">
+        <label for="numeroContaDestino" class="form-label">Conta Destino</label>
+        <input type="text" class="form-control" aria-label="Last name" id="numeroContaDestino" formControlName="numeroContaDestino">
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="valor" class="form-label">Valor</label>
+    <input type="text" class="form-control" id="valor" formControlName="valor">
+  </div>
+
+  <button type="submit" class="btn btn-dark">Salvar</button>
+</form>

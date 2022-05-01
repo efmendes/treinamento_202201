@@ -1,0 +1,26 @@
+<p>{{ isEditando() ? "Edição" : "Cadastro"}} Clientes</p>
+
+<!--{{ formGroupCliente.value | json }}-->
+
+<form [formGroup]="formGroupCliente" (ngSubmit)="enviar()">
+  <div class="mb-3">
+    <label for="nome" class="form-label">Nome</label>
+    <input type="text" class="form-control" id="nome" formControlName="nome">
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="text" class="form-control" id="email" formControlName="email">
+  </div>
+
+  <div class="mb-3">
+    <label for="cpf" class="form-label">Cpf</label>
+    <input type="text" class="form-control" id="cpf" formControlName="cpf">
+  </div>
+
+  <div class="mb-3">
+    <label for="observacoes" class="form-label">Observações</label>
+    <textarea id="observacoes" rows="3" class="form-control" formControlName="observacoes"></textarea>
+  </div>
+  <button [disabled]="!formGroupCliente.valid" type="submit" class="btn btn-primary">Enviar</button>
+</form>

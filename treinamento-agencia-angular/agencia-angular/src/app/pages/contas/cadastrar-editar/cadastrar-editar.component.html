@@ -1,0 +1,30 @@
+<!-- {{ formGroupConta.value | json }} -->
+
+<form [formGroup]="formGroupConta" (ngSubmit)="enviar()">
+  <div class="mb-3">
+    <label for="agencia" class="form-label">Agência</label>
+    <input type="text" class="form-control" id="agencia" formControlName="agencia">
+  </div>
+
+  <div class="mb-3">
+    <label for="cliente" class="form-label">Cliente</label>
+    <select *ngIf="!contaEditar" class="form-select" aria-label="Default select example" formControlName="cliente">
+      <option selected *ngFor="let cliente of clientes" value="{{cliente.id}}">{{cliente.nome}}</option>
+    </select>
+    <input *ngIf="contaEditar" disabled type="text" class="form-control" id="conta" [value]="contaEditar.cliente.id">
+    <!-- input para pegar id da conta quando for cadastrada -->
+    <input *ngIf="contaEditar" hidden type="text" class="form-control" id="conta" formControlName="id">
+  </div>
+
+  <div class="mb-3">
+    <label for="conta" class="form-label">Conta</label>
+    <input type="text" class="form-control" id="conta" formControlName="numero">
+  </div>
+
+  <div class="mb-3">
+    <label  *ngIf="!contaEditar" for="valor" class="form-label">Valor</label>
+    <input *ngIf="!contaEditar" type="text" class="form-control" id="valor" formControlName="saldo">
+  </div>
+
+  <button type="submit" class="btn btn-dark">Salvar</button>
+</form>

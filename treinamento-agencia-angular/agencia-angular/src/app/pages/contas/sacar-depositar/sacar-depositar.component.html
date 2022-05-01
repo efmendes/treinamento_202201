@@ -1,0 +1,22 @@
+<p>sacar-depositar works!</p>
+
+{{ formSaqueDeposito.value | json }}
+
+<form [formGroup]="formSaqueDeposito" class="container" (ngSubmit)="sacarDepositar()">
+  <div class="mb-3">
+    <label for="agencia" class="form-label">Agência</label>
+    <input type="text" class="form-control" id="agencia" formControlName="agencia">
+  </div>
+
+  <div class="mb-3">
+    <label for="conta" class="form-label">Conta</label>
+    <input type="text" class="form-control" id="conta" formControlName="numero">
+  </div>
+
+  <div class="mb-3">
+    <label for="valor" class="form-label">Valor</label>
+    <input type="text" class="form-control" id="valor" formControlName="valor">
+  </div>
+
+  <button type="submit" class="btn btn-dark">Sacar</button>
+</form>

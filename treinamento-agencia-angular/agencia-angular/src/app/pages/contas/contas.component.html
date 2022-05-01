@@ -1,6 +1,8 @@
-<p align="center">Minhas Contas</p>
+<h3>Contas</h3>
 
-<table class="table table-dark table-striped">
+<a type="button" class="btn btn-secondary" routerLink="cadastrar">Novo</a>
+
+<table class="table table-striped">
 
   <thead>
     <tr>
@@ -10,6 +12,7 @@
       <th scope="col">Saldo</th>
       <th scope="col">Cliente</th>
       <th scope="col">Email</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -20,5 +23,18 @@
       <td>{{ conta.saldo }}</td>
       <td>{{ conta.cliente.nome }}</td>
       <td>{{ conta.cliente.email }}</td>
+      <td>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Ações
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" [routerLink]="['sacar',conta.id]">Sacar</a></li>
+            <li><a class="dropdown-item" [routerLink]="['depositar',conta.id]" >Depositar</a></li>
+            <li><a class="dropdown-item" [routerLink]="['transferir',conta.id]" >Transferir</a></li>
+            <li><a class="dropdown-item" [routerLink]="['editar',conta.id]">Editar</a></li>
+          </ul>
+        </div>
+      </td>
     </tr>
   </tbody>
