@@ -57,8 +57,13 @@ export class TransferirComponent implements OnInit {
       console.log('Conta -- ', result);
       //preencer o campo
       this.formTransferencia.get('nome')?.setValue(result.cliente.nome);
+      this.formTransferencia.get('nome')?.disable();
+
       this.formTransferencia.get('agenciaOrigem')?.setValue(result.agencia);
+      this.formTransferencia.get('agenciaOrigem')?.disable();
+
       this.formTransferencia.get('numeroContaOrigem')?.setValue(result.numero);
+      this.formTransferencia.get('numeroContaOrigem')?.disable();
       //this.formTransferencia.get('clienteDestino')?.setValue(result.cliente.nome);
     });
   }

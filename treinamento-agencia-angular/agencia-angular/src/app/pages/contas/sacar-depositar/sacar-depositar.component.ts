@@ -21,14 +21,14 @@ export class SacarDepositarComponent implements OnInit {
     valor : 0
   }
 
-  emptyconta : iContaCadastrar = {
+  conta : iContaCadastrar = {
     id: 0,
     agencia: '',
     numero: '',
     saldo: 0,
   }
 
-  formSaqueDeposito : FormGroup = new FormGroup({});
+  formSaqueDeposito : FormGroup = this.preencherFormulario(this.conta);
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router, private contasService: ContasService) { }
@@ -37,21 +37,22 @@ export class SacarDepositarComponent implements OnInit {
   ngOnInit(): void {
 
     const id = Number(this.activatedRoute.snapshot.paramMap.get('id')); //id da conta
-    //console.log('ID: ',id);
 
+    this.buscarContaId(id);
 
-    if(id){
-      this.contasService.buscarContaId(id).subscribe((result: iConta) => {
-        //console.log(result);
-        this.formSaqueDeposito = this.preencherFormulario(result);
-      }, error => {
-        console.log('Erro ao buscar conta: ',error);
-      });
-    }
 
   }
 
-  preencherFormulario(conta : iConta): FormGroup {
+  buscarContaId(id:number){
+    this.contasService.buscarContaId(id).subscribe(result => {
+      this.formSaqueDeposito.get('agencia')?.setValue(result.agencia);
+      this.formSaqueDeposito.get('agencia')?.disable();
+      this.formSaqueDeposito.get('numero')?.setValue(result.numero);
+      this.formSaqueDeposito.get('numero')?.disable();
+    });
+  }
+
+  preencherFormulario(conta : iContaCadastrar): FormGroup {
     return new FormGroup({
       agencia : new FormControl(conta.agencia ? conta.agencia : '', Validators.required),
       numero : new FormControl(conta.numero ? conta.numero : '', Validators.required),

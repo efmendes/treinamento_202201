@@ -11,7 +11,7 @@
     <select *ngIf="!contaEditar" class="form-select" aria-label="Default select example" formControlName="cliente">
       <option selected *ngFor="let cliente of clientes" value="{{cliente.id}}">{{cliente.nome}}</option>
     </select>
-    <input *ngIf="contaEditar" disabled type="text" class="form-control" id="conta" [value]="contaEditar.cliente.id">
+    <input *ngIf="contaEditar" disabled type="text" class="form-control" id="conta" [value]="contaEditar.cliente.nome">
     <!-- input para pegar id da conta quando for cadastrada -->
     <input *ngIf="contaEditar" hidden type="text" class="form-control" id="conta" formControlName="id">
   </div>

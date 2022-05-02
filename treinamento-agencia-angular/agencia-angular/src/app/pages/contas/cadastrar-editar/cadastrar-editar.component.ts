@@ -24,6 +24,7 @@ export class CadastrarEditarComponent implements OnInit {
 
   clientes: iCliente[] = [];
   contaEditar: any = null;
+  cliente: any = null;
 
   formGroupConta: FormGroup = this.preencherFormularioConta(this.conta);
 
@@ -51,7 +52,8 @@ export class CadastrarEditarComponent implements OnInit {
       this.formGroupConta.get('agencia')?.setValue(result.agencia);
       this.formGroupConta.get('numero')?.setValue(result.numero);
       this.formGroupConta.get('saldo')?.setValue(result.saldo);
-      this.formGroupConta.get('cliente')?.setValue(result.cliente.id);
+      //this.formGroupConta.get('cliente')?.setValue(result.cliente.nome);
+      this.cliente = { id: result.cliente.id }
     });
   }
 
@@ -68,20 +70,21 @@ export class CadastrarEditarComponent implements OnInit {
 
   listarClientes(){
     this.clienteService.listarClientes().subscribe((result: iCliente[]) => {
-
       this.clientes = result;
       console.log(this.clientes)
-
     });
   }
 
   enviar(){
+    if(!this.cliente){
+      this.cliente = { id: this.formGroupConta.get('cliente')?.value }
+    }
     const conta: iContaCadastrar = {
       id: this.formGroupConta.get('id')?.value,
       agencia : this.formGroupConta.get('agencia')?.value,
       numero : this.formGroupConta.get('numero')?.value,
       saldo: this.formGroupConta.get('saldo')?.value,
-      cliente: { id: this.formGroupConta.get('cliente')?.value } as iCliente
+      cliente: this.cliente as iCliente
     }
 
     console.log(conta);
